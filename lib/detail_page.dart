@@ -1,0 +1,16 @@
+import 'package:flutter/material.dart';
+
+class DetailPage extends StatelessWidget {
+  const DetailPage({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('ㅇㅇㅇ'),
+      ),
+      body: Container(child: Text('자세하게!!!!'),
+      ),
+    );
+  }
+}

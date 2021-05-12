@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_ui_1/detail_page.dart';
+import 'package:flutter_ui_1/interests.dart';
 import 'package:flutter_ui_1/modle/data.dart';
 import 'package:flutter_ui_1/modle/data_info.dart';
 import 'package:provider/provider.dart';
 
-
 void main() {
-  runApp(
-      MultiProvider(
-        providers: [
-          ChangeNotifierProvider<NewsRepositore>(create: (_) => NewsRepositore()),
-        ],
-        child: MyApp(),
-      ));
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider<NewsRepositore>(create: (_) => NewsRepositore()),
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -22,15 +22,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(),
@@ -39,18 +30,16 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key key}) : super(key: key);
-
+   Result news;
+   // MyHomePage(this.news);
 
   @override
-
   _MyHomePageState createState() => _MyHomePageState();
-
 }
 
-
 class _MyHomePageState extends State<MyHomePage> {
-  Result news;
+
+
   @override
   void initState() {
     super.initState();
@@ -63,29 +52,54 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     });
   }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
-        title: Text('news.title'),
+        title: Text(''),
       ),
-      drawer: Container(
-        child: Drawer(
-            child: ListView(
-          children: [
-            Container(
-              decoration: BoxDecoration(color: Colors.red),
-              child: ListTile(
-                title: Text(
-                  'jetnews',
-                  style: TextStyle(fontSize: 20, color: Colors.white),
-                ),
+      drawer: Drawer(
+          child: ListView(
+        children: [
+          Container(
+            decoration: BoxDecoration(color: Colors.red),
+            child: ListTile(
+              title: Text(
+                'jetnews',
+                style: TextStyle(fontSize: 20, color: Colors.white),
               ),
-            )
-          ],
-        )),
-      ),
+            ),
+          ),
+          Column(
+            children: [
+              ListTile(
+                leading: Icon(Icons.home),
+                title: Text('HOME'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyHomePage()),
+                  );
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.list),
+                title: Text('Interests'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Interests()),
+                  );
+                },
+              )
+            ],
+          )
+        ],
+      )),
       body: ListView(
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
         children: [
           ListTile(
             title: Text(
@@ -146,7 +160,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 Column(
                   children: [
                     Image.network(
-                        "https://image.flaticon.com/icons/png/512/2565/2565977.png",width: 100,height: 100,),
+                      "https://image.flaticon.com/icons/png/512/2565/2565977.png",
+                      width: 100,
+                      height: 100,
+                    ),
                     ListTile(
                       title: Text('A Little Thing about Android Module Paths'),
                       subtitle: Text('pietro Maggi - 1min read'),
@@ -155,7 +172,39 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
-          )
+          ),
+          ListTile(
+            leading: Image.network(
+                "https://image.flaticon.com/icons/png/512/2565/2565977.png"),
+            title: Text('A Little Thing about Android Module Paths'),
+            subtitle: Text('pietro Maggi - 1min read'),
+            trailing: IconButton(
+              icon: Icon(Icons.more_vert),
+              onPressed: () {},
+            ),
+          ),
+          ListTile(
+            leading: Image.network(
+                "https://image.flaticon.com/icons/png/512/2565/2565977.png"),
+            title: Text('A Little Thing about Android Module Paths'),
+            subtitle: Text('pietro Maggi - 1min read'),
+            trailing: IconButton(
+
+              icon: Icon(Icons.more_vert),
+              onPressed: () {},
+
+            ),
+          ),
+          ListTile(
+            leading: Image.network(
+                "https://image.flaticon.com/icons/png/512/2565/2565977.png"),
+            title: Text('A Little Thing about Android Module Paths'),
+            subtitle: Text('pietro Maggi - 1min read'),
+            trailing: IconButton(
+              icon: Icon(Icons.more_vert),
+              onPressed: () {},
+            ),
+          ),
         ],
       ),
     );
