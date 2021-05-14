@@ -1,6 +1,8 @@
 class NewsInfo {
   List<Result> result;
+
   NewsInfo({this.result});
+
   NewsInfo.fromJson(Map<String, dynamic> json) {
     if (json['result'] != null) {
       result = [];
@@ -9,6 +11,7 @@ class NewsInfo {
       });
     }
   }
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.result != null) {
@@ -17,6 +20,7 @@ class NewsInfo {
     return data;
   }
 }
+
 class Result {
   String id;
   int imageId;
@@ -27,6 +31,7 @@ class Result {
   String subtitle;
   String title;
   String url;
+
   Result(
       {this.id,
         this.imageId,
@@ -37,6 +42,7 @@ class Result {
         this.subtitle,
         this.title,
         this.url});
+
   Result.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     imageId = json['imageId'];
@@ -57,6 +63,7 @@ class Result {
     title = json['title'];
     url = json['url'];
   }
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
@@ -77,17 +84,21 @@ class Result {
     return data;
   }
 }
+
 class Metadata {
   Author author;
   String date;
   int readTimeMinutes;
+
   Metadata({this.author, this.date, this.readTimeMinutes});
+
   Metadata.fromJson(Map<String, dynamic> json) {
     author =
     json['author'] != null ? new Author.fromJson(json['author']) : null;
     date = json['date'];
     readTimeMinutes = json['readTimeMinutes'];
   }
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.author != null) {
@@ -98,14 +109,18 @@ class Metadata {
     return data;
   }
 }
+
 class Author {
   String name;
   String url;
+
   Author({this.name, this.url});
+
   Author.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     url = json['url'];
   }
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['name'] = this.name;
@@ -113,11 +128,14 @@ class Author {
     return data;
   }
 }
+
 class Paragraphs {
   List<Markups> markups;
   String text;
   String type;
+
   Paragraphs({this.markups, this.text, this.type});
+
   Paragraphs.fromJson(Map<String, dynamic> json) {
     if (json['markups'] != null) {
       markups = new List<Markups>();
@@ -128,6 +146,7 @@ class Paragraphs {
     text = json['text'];
     type = json['type'];
   }
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.markups != null) {
@@ -138,18 +157,22 @@ class Paragraphs {
     return data;
   }
 }
+
 class Markups {
   int end;
   int start;
   String type;
   String href;
+
   Markups({this.end, this.start, this.type, this.href});
+
   Markups.fromJson(Map<String, dynamic> json) {
     end = json['end'];
     start = json['start'];
     type = json['type'];
     href = json['href'];
   }
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['end'] = this.end;
@@ -159,14 +182,18 @@ class Markups {
     return data;
   }
 }
+
 class Publication {
   String logoUrl;
   String name;
+
   Publication({this.logoUrl, this.name});
+
   Publication.fromJson(Map<String, dynamic> json) {
     logoUrl = json['logoUrl'];
     name = json['name'];
   }
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['logoUrl'] = this.logoUrl;
